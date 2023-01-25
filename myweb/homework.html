@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <title>homework | 정승환 팬명록</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Jua&display=swap" rel="stylesheet">
+    
+</head>
+
+<body> 
+    <div class="mypic">
+        <h1>정승환 팬명록</h1>
+        <p >현재온도 : <span id="tem"></span>도</p>
+    </div>
+    <div class="mypost">
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" placeholder="url">
+            <label for="floatingInput">닉네임</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="comment" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">응원댓글</label>
+        </div>
+        
+        <button onclick= "save_comment()" type="button" class="btn btn-dark">응원남기기</button>
+    </div>
+    <div class="mycard" id="comment-list">
+        <div class="card">
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>멀리 배웅하던 길 여전히 나는 그곳에 서서</p>
+                <footer class="blockquote-footer">눈사람</footer>
+              </blockquote>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>나 말이야 무너지고 있는 것 같아</p>
+                <footer class="blockquote-footer">보통의 하루</footer>
+              </blockquote>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+              <blockquote class="blockquote mb-0">
+                <p>이젠 정말 괜찮은 줄 알았어</p>
+                <footer class="blockquote-footer">비가온다</footer>
+              </blockquote>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+      window.onload = function() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/weather/gunsan",
+                data: {},
+                success: function (response) {
+                    let gu_temp = response['temp']
+                    // $("#tem").text("현재기온 : " + temp +"도")
+                    $("#tem").text(gu_temp)
+
+                    console.log(response)
+
+                }
+            })
+      }
+    </script>
+</body>
+
+
+</html>
