@@ -19,3 +19,4 @@ for movie in movies:
     if a is not None:
         print(a.text)
 #############################
+
